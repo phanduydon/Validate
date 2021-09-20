@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./main.css">
+</head>
+
+<body>
+    <div class="main">
+
+        <form action="" method="POST" class="form" id="form-1">
+            <h3 class="heading">Đăng ký làm ny</h3>
+            <p class="desc">make the furture together ❤️</p>
+
+            <div class="spacer"></div>
+
+            <div class="form-group">
+                <label for="fullname" class="form-label">Tên đầy đủ</label>
+                <input id="fullname" name="fullname" type="text" placeholder="VD: Nguyễn THỊ Ngân" class="form-control">
+                <span class="form-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="email" class="form-label">Email</label>
+                <input id="email" name="email" type="text" placeholder="VD: NganNgokNgek@gmail.com" class="form-control">
+                <span class="form-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="password" class="form-label">Mật khẩu</label>
+                <input id="password" name="password" type="password" placeholder="Đặt là em yêu anh" class="form-control">
+                <span class="form-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="password_confirmation" class="form-label">Nhập lại mật khẩu</label>
+                <input id="password_confirmation" name="password_confirmation" placeholder="Như trên" type="password" class="form-control">
+                <span class="form-message"></span>
+            </div>
+            <div class="form-group">
+                <label for="province" class="form-label">Tỉnh/TP</label>
+                <select id="province" name="province" placeholder="Nhập lại mật khẩu" class="form-control">
+                    <option value="">--chọn tỉnh/TP--</option>
+                    <option value="30">Hải Dương</option>
+                    <option value="30">Hải Dương</option>
+                    <option value="30">Hải Dương</option>
+                    <option value="30">Hải Dương</option>
+                    <option value="30">...</option>
+                    <option value="30">...</option>
+                    <option value="30">...</option>
+                    <option value="30">...</option>
+                    <option value="30"> vẫn là Hải Dương</option>
+                </select>
+                <span class="form-message"></span>
+            </div>
+            <div class="form-group">
+                <label for="password_confirmation" class="form-label">Giới tính</label>
+                <div style="display: flex; justify-content: space-around;font-size: 14px;">
+                    <div style="display: flex;justify-content: center;align-items: center">
+                        <input name="gender" type="radio" value="male" class="form-control">
+                        <span>Nam</span>
+                    </div>
+                    <div style="display: flex;justify-content: center;align-items: center">
+                        <input name="gender" type="radio" value="female" class="form-control">
+                        <span>Nữ</span>
+                    </div>
+                    <div style="display: flex;justify-content: center;align-items: center">
+                        <input name="gender" type="radio" value="other" class="form-control">
+                        <span>Khác</span>
+                    </div>
+                </div>
+                <span class="form-message"></span>
+            </div>
+            <div class="form-group">
+                <label for="password_confirmation" class="form-label">Tuổi</label>
+                <div style="display: flex; justify-content: space-around;font-size: 14px;">
+                    <div style="display: flex;justify-content: center;align-items: center">
+                        <input name="age" type="checkbox" value="18+" class="form-control">
+                        <span>18+</span>
+                    </div>
+                    <div style="display: flex;justify-content: center;align-items: center">
+                        <input name="age" type="checkbox" value="18-27" class="form-control">
+                        <span>18->27</span>
+                    </div>
+                    <div style="display: flex;justify-content: center;align-items: center">
+                        <input name="age" type="checkbox" value="27->" class="form-control">
+                        <span>27-</span>
+                    </div>
+                </div>
+                <span class="form-message"></span>
+            </div>
+
+            <button class="form-submit">Đăng ký</button>
+        </form>
+    </div>
+    <script src="./index.js"></script>
+    <script>
+        Validator({
+            form: '#form-1',
+            errorSelector: '.form-message',
+            passwordSelector: '#password',
+            formGroupSelector: '.form-group',
+            rules: [
+                Validator.isRequired('#fullname'),
+                Validator.isRequired('#email'),
+                Validator.isEmail('#email'),
+                Validator.isRequired('#password'),
+                Validator.minLength('#password', 6),
+                Validator.isRequired('#password_confirmation'),
+                Validator.isConfirmed('#password_confirmation', '#form-1 #password'),
+                Validator.isRequired('#province'),
+                Validator.isRequired('input[name="gender"]'),
+                Validator.isRequired('input[name="age"]'),
+            ],
+            onSubmit: function(data) {
+                console.log(data);
+            }
+        })
+    </script>
+</body>
+
+</html>
